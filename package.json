@@ -1,0 +1,17 @@
+{
+  "name": "hkdse txt file converter",
+  "version": "1.0.0",
+  "description": "convert hkdse txt file to csv",
+  "main": "convert-simplex.js",
+  "dependencies": {
+    "lodash": "^3.10.0",
+    "simplex": "^0.2.0",
+    "json2csv": "^2.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CyrusN",
+  "license": "ISC"
+}
