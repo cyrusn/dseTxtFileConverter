@@ -19,7 +19,7 @@ function parseTxt2JSON(data) {
 
   var newValue = _.map(data, function(line){
 
-    var basicInfoRegExp = /(\d)+\s+(\w\d{6}\w)\s+(\d{4})(\d{2})(\d{2})WEBSAMS\s+DSE\s+(\d{4})(.+)30794+(\d+)\s+(.*)$/;
+    var basicInfoRegExp = /(\d)+\s+(\w\d{6}\w)\s+(\d{4})(\d{2})(\d{2})WEBSAMS\s+DSE\s+(\d{4})([\w\s]+)30794+(\d+)\s+(.*)$/;
     var subsitition = {
       "id": "$2",
       "dob": "$3-$4-$5",

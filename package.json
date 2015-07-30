@@ -1,5 +1,5 @@
 {
-  "name": "hkdse txt file converter",
+  "name": "dseTxtFileConverter",
   "version": "1.0.0",
   "description": "convert hkdse txt file to csv",
   "main": "convert-simplex.js",
