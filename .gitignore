@@ -3,3 +3,4 @@
 *.txt
 reference
 node_modules
+result.json
