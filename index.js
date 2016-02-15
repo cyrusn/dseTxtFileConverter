@@ -4,7 +4,8 @@ const fs = require('fs');
 const _ = require('lodash');
 const json2csv = require('json2csv');
 const Code = require('./code.json');
-const data = fs.readFileSync('./raw/hkdse.txt', 'utf-8');
+const Filenames = fs.readdirSync('./raw');
+const Path = require('path');
 
 function convertCodeToText (array) {
   return array.map(string => {
@@ -74,23 +75,35 @@ function parseTxt2JSON (lines) {
   });
 }
 
-// https://lodash.com/docs#compact
-const dataArray = _.compact(data.split('\r\n'));
-const convertedData = parseTxt2JSON(dataArray);
+function convertFile (file, filename) {
+  // body...
+  // https://lodash.com/docs#compact
+  const dataArray = _.compact(file.split('\r\n'));
+  const convertedData = parseTxt2JSON(dataArray);
+  const filePath = Path.join('./result', Path.basename(filename, '.txt'));
+  console.log(filePath);
 
-fs.writeFileSync('./result/result.json', JSON.stringify(convertedData), 'utf-8');
+  fs.writeFileSync(filePath + '.json', JSON.stringify(convertedData), 'utf-8');
 
-const fields = ['id', 'dob', 'name', 'hkeaaId', 'A010', 'A020', 'A030', 'A031', 'A032', 'A040', 'A070', 'A080', 'A100', 'A110', 'A120', 'A130', 'A140', 'A150', 'A161', 'A162', 'A163', 'A165', 'A172', 'A200', 'A230', 'A010S', 'A020S', 'APL'];
-const fieldNames = convertCodeToText(fields);
+  const fields = ['id', 'dob', 'name', 'hkeaaId', 'A010', 'A020', 'A030', 'A031', 'A032', 'A040', 'A070', 'A080', 'A100', 'A110', 'A120', 'A130', 'A140', 'A150', 'A161', 'A162', 'A163', 'A165', 'A172', 'A200', 'A230', 'A010S', 'A020S', 'APL'];
+  const fieldNames = convertCodeToText(fields);
 
-const config = {
-  data: convertedData,
-  fields: fields,
-  fieldNames: fieldNames
-};
+  const config = {
+    data: convertedData,
+    fields: fields,
+    fieldNames: fieldNames
+  };
 
-json2csv(config, (err, csv) => {
-  if (err) throw err;
-  fs.writeFileSync('./result/result.csv', csv, 'utf-8');
-  console.log('Process Complete!');
+  json2csv(config, (err, csv) => {
+    if (err) throw err;
+    fs.writeFileSync(filePath + '.csv', csv, 'utf-8');
+    console.log('Process Complete!');
+  });
+}
+
+Filenames.forEach(filename => {
+  const filePath = Path.join('./raw', filename);
+  const data = fs.readFileSync(filePath, 'utf-8');
+  console.log(`Converting ${filename}:`);
+  convertFile(data, filename);
 });
