@@ -83,7 +83,6 @@ function convertFile (file, filename) {
   const filePath = Path.join('./result', Path.basename(filename, '.txt'));
   console.log(filePath);
 
-  fs.writeFileSync(filePath + '.json', JSON.stringify(convertedData), 'utf-8');
 
   const fields = ['id', 'dob', 'name', 'hkeaaId', 'A010', 'A020', 'A030', 'A031', 'A032', 'A040', 'A070', 'A080', 'A100', 'A110', 'A120', 'A130', 'A140', 'A150', 'A161', 'A162', 'A163', 'A165', 'A172', 'A200', 'A230', 'A010S', 'A020S', 'APL'];
   const fieldNames = convertCodeToText(fields);
@@ -99,6 +98,14 @@ function convertFile (file, filename) {
     fs.writeFileSync(filePath + '.csv', csv, 'utf-8');
     console.log('Process Complete!');
   });
+
+  const namedKeyData = convertedData.map((student) => {
+    return _.mapKeys(student, (value, key) => {
+      const code = _.find(Code, {'code': key})
+      return code ? code.abbr : key;
+    })
+  });
+  fs.writeFileSync(filePath + '.json', JSON.stringify(namedKeyData, null, 2), 'utf-8');
 }
 
 Filenames.forEach(filename => {
