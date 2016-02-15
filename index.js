@@ -1,11 +1,12 @@
 'use strict';
 
-const fs = require('fs');
+const Fs = require('fs');
 const _ = require('lodash');
-const json2csv = require('json2csv');
+const Json2csv = require('json2csv');
 const Code = require('./code.json');
-const Filenames = fs.readdirSync('./raw');
+const Filenames = Fs.readdirSync('./raw');
 const Path = require('path');
+const SchoolCode = 30794;
 
 function convertCodeToText (array) {
   return array.map(string => {
@@ -16,7 +17,7 @@ function convertCodeToText (array) {
 
 function parseTxt2JSON (lines) {
   return lines.map(line => {
-    const basicInfoRegExp = /^(\d)+\s+(\w\d{6}\w)\s+(\d{4})(\d{2})(\d{2})WEBSAMS\s+DSE\s+(\d{4})([\w\s]+)30794+(\d+)\s+(.*)$/;
+    const basicInfoRegExp = new RegExp(`^(\\d)+\\s+(\\w\\d{6}\\w)\\s+(\\d{4})(\\d{2})(\\d{2})WEBSAMS\\s+DSE\\s+(\\d{4})([\\w\\s]+)${SchoolCode}+(\\d+)\\s+(.*)$`);
     const schema = {
       'id': '$2',
       'dob': '$3-$4-$5',
@@ -93,9 +94,9 @@ function convertFile (file, filename) {
     fieldNames: fieldNames
   };
 
-  json2csv(config, (err, csv) => {
+  Json2csv(config, (err, csv) => {
     if (err) throw err;
-    fs.writeFileSync(filePath + '.csv', csv, 'utf-8');
+    Fs.writeFileSync(filePath + '.csv', csv, 'utf-8');
     console.log('Process Complete!');
   });
 
@@ -105,12 +106,12 @@ function convertFile (file, filename) {
       return code ? code.abbr : key;
     })
   });
-  fs.writeFileSync(filePath + '.json', JSON.stringify(namedKeyData, null, 2), 'utf-8');
+  Fs.writeFileSync(filePath + '.json', JSON.stringify(namedKeyData, null, 2), 'utf-8');
 }
 
 Filenames.forEach(filename => {
   const filePath = Path.join('./raw', filename);
-  const data = fs.readFileSync(filePath, 'utf-8');
+  const data = Fs.readFileSync(filePath, 'utf-8');
   console.log(`Converting ${filename}:`);
   convertFile(data, filename);
 });
