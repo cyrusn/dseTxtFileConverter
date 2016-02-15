@@ -1,23 +1,22 @@
 'use strict';
 
-var fs = require('fs');
-var _ = require('lodash');
-var json2csv = require('json2csv');
-var code = require('./code.json');
-var data = fs.readFileSync('./raw/hkdse.txt', 'utf-8');
+const fs = require('fs');
+const _ = require('lodash');
+const json2csv = require('json2csv');
+const Code = require('./code.json');
+const data = fs.readFileSync('./raw/hkdse.txt', 'utf-8');
 
 function convertCodeToText (array) {
-  return array.map(function (string) {
-    var obj = _.find(code, {'code': string});
-    if (!obj) return string;
-    return _.result(obj, 'short');
+  return array.map(string => {
+    const obj = _.find(Code, {'code': string});
+    return obj ? obj.abbr : string;
   });
 }
 
-function parseTxt2JSON (data) {
-  return _.map(data, function (line) {
-    var basicInfoRegExp = /^(\d)+\s+(\w\d{6}\w)\s+(\d{4})(\d{2})(\d{2})WEBSAMS\s+DSE\s+(\d{4})([\w\s]+)30794+(\d+)\s+(.*)$/;
-    var subsitition = {
+function parseTxt2JSON (lines) {
+  return lines.map(line => {
+    const basicInfoRegExp = /^(\d)+\s+(\w\d{6}\w)\s+(\d{4})(\d{2})(\d{2})WEBSAMS\s+DSE\s+(\d{4})([\w\s]+)30794+(\d+)\s+(.*)$/;
+    const schema = {
       'id': '$2',
       'dob': '$3-$4-$5',
       'name': '$7',
@@ -25,7 +24,7 @@ function parseTxt2JSON (data) {
       'grades': '$9'
     };
 
-    var obj = JSON.parse(
+    const jsonString = JSON.parse(
       // construct literal object with regex parsing
       // the grades are saved as result and parsed separately
       line
@@ -33,23 +32,25 @@ function parseTxt2JSON (data) {
         .replace(/5\*\*/g, '7')
         // convert 5* to 6
         .replace(/5\*/g, '6')
-        .replace(basicInfoRegExp, JSON.stringify(subsitition))
+        .replace(basicInfoRegExp, JSON.stringify(schema))
     );
 
-    obj.name = _.words(obj.name).join(' ');
+    // split string into array of words
+    jsonString.name = _.words(jsonString.name).join(' ');
 
-    var APLRegExp = /([B]\d{3})\s+(\w{2})\s+([YN])/g;
+    const APLRegExp = /([B]\d{3})\s+(\w{2})\s+([YN])/g;
     // handle subgrade of A010
-    var A010RegExp = /(A010)\s+1\s+([\dUX])\s+2\s+([\dUX])\s+3\s+([\dUX])\s+4\s+([\dUX])\s+5\s+([\dUX])/g;
+    const A010RegExp = /(A010)\s+1\s+([\dUX])\s+2\s+([\dUX])\s+3\s+([\dUX])\s+4\s+([\dUX])\s+5\s+([\dUX])/g;
     // handle subgrade of A020
-    var A020RegExp = /(A020)\s+1\s+([\dUX])\s+2\s+([\dUX])\s+3\s+([\dUX])\s+4\s+([\dUX])/g;
-    var generalSubjectRegExp = /([ABC]\d{3})\s+([\dUX])/g;
+    const A020RegExp = /(A020)\s+1\s+([\dUX])\s+2\s+([\dUX])\s+3\s+([\dUX])\s+4\s+([\dUX])/g;
+    const generalSubjectRegExp = /([ABC]\d{3})\s+([\dUX])/g;
     // https://regex101.com/r/lZ8lO0/1
     // to solve the case for ... A165    A161   5     A162    4  ...
     // remove redundant A165 before A161 or A162
-    var A165RegExp = /A165\s+([ABC])/g;
+    const A165RegExp = /A165\s+([ABC])/g;
 
-    var resultString = '{' + obj.grades
+    // parse grades
+    const resultString = '{' + jsonString.grades
         .replace(APLRegExp, '"APL":"$1-$2-$3",')
         .replace(A165RegExp, '$1')
         // convert to e.g. CHI-S:23223
@@ -63,7 +64,8 @@ function parseTxt2JSON (data) {
         // remove the last comma
         .slice(0, -1) + '}';
 
-    var resultObj = _(obj)
+    const resultObj = _(jsonString)
+      // remove grades
       .omit('grades')
       .merge(JSON.parse(resultString))
       .value();
@@ -73,22 +75,21 @@ function parseTxt2JSON (data) {
 }
 
 // https://lodash.com/docs#compact
-var dataArray = _.compact(data.split('\r\n'));
-var convertedData = parseTxt2JSON(dataArray);
+const dataArray = _.compact(data.split('\r\n'));
+const convertedData = parseTxt2JSON(dataArray);
 
 fs.writeFileSync('./result/result.json', JSON.stringify(convertedData), 'utf-8');
 
-var fields = ['id', 'dob', 'name', 'hkeaaId', 'A010', 'A020', 'A030', 'A031', 'A032', 'A040', 'A070', 'A080', 'A100', 'A110', 'A120', 'A130', 'A140', 'A150', 'A161', 'A162', 'A163', 'A165', 'A172', 'A200', 'A230', 'A010S', 'A020S', 'APL'];
-var fieldNames = convertCodeToText(fields);
-// console.log(fieldNames);
+const fields = ['id', 'dob', 'name', 'hkeaaId', 'A010', 'A020', 'A030', 'A031', 'A032', 'A040', 'A070', 'A080', 'A100', 'A110', 'A120', 'A130', 'A140', 'A150', 'A161', 'A162', 'A163', 'A165', 'A172', 'A200', 'A230', 'A010S', 'A020S', 'APL'];
+const fieldNames = convertCodeToText(fields);
 
-var config = {
+const config = {
   data: convertedData,
   fields: fields,
   fieldNames: fieldNames
 };
 
-json2csv(config, function (err, csv) {
+json2csv(config, (err, csv) => {
   if (err) throw err;
   fs.writeFileSync('./result/result.csv', csv, 'utf-8');
   console.log('Process Complete!');

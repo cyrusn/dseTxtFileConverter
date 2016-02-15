@@ -1,371 +1,371 @@
 [{
   "code": "A010",
   "subject": "CHINESE LANGUAGE",
-  "short":"CHI",
+  "abbr": "CHI",
   "type": "Compulsory"
-},{
+}, {
   "code": "A010S",
   "subject": "CHINESE LANGUAGE",
-  "short":"CHI-S",
+  "abbr": "CHI-S",
   "type": "Compulsory"
-},{
+}, {
   "code": "A020S",
   "subject": "ENGLISH LANGUAGE",
-  "short":"ENG-S",
+  "abbr": "ENG-S",
   "type": "Compulsory"
 }, {
   "code": "A130",
   "subject": "BIOLOGY",
-  "short":"BIO",
+  "abbr": "BIO",
   "type": "Elective"
 }, {
   "code": "A172",
   "subject": "BUSINESS, ACCOUNTING AND FINANCIAL STUDIES",
-  "short":"BAFS",
+  "abbr": "BAFS",
   "type": "Elective"
 }, {
   "code": "A140",
   "subject": "CHEMISTRY",
-  "short":"CHEM",
+  "abbr": "CHEM",
   "type": "Elective"
 }, {
   "code": "A070",
   "subject": "CHINESE HISTORY",
-  "short":"CHIST",
+  "abbr": "CHIST",
   "type": "Elective"
 }, {
   "code": "A050",
   "subject": "CHINESE LITERATURE",
-  "short":"CLIT",
+  "abbr": "CLIT",
   "type": "Elective"
 }, {
   "code": "A165",
   "subject": "COMBINED SCIENCE",
-  "short":"CS",
+  "abbr": "CS",
   "type": "Elective"
 }, {
   "code": "A161",
   "subject": "COMBINED SCIENCE",
-  "short":"CS-Bio",
+  "abbr": "CS-Bio",
   "type": "Elective"
 }, {
   "code": "A162",
   "subject": "COMBINED SCIENCE",
-  "short":"CS-Chem",
+  "abbr": "CS-Chem",
   "type": "Elective"
 }, {
   "code": "A163",
   "subject": "COMBINED SCIENCE",
-  "short":"CS-Phy",
+  "abbr": "CS-Phy",
   "type": "Elective"
 }, {
   "code": "A180",
   "subject": "DESIGN AND APPLIED TECHNOLOGY",
-  "short":"DESIGN",
+  "abbr": "DESIGN",
   "type": "Elective"
 }, {
   "code": "A080",
   "subject": "ECONOMICS",
-  "short":"ECON",
+  "abbr": "ECON",
   "type": "Elective"
 }, {
   "code": "A090",
   "subject": "ETHICS AND RELIGIOUS STUDIES",
-  "short":"RELIGIOUS",
+  "abbr": "RELIGIOUS",
   "type": "Elective"
 }, {
   "code": "C8682",
   "subject": "FRENCH LANGUAGE",
-  "short":"FREN",
+  "abbr": "FREN",
   "type": "Elective"
 }, {
   "code": "A100",
   "subject": "GEOGRAPHY",
-  "short":"GEOG",
+  "abbr": "GEOG",
   "type": "Elective"
 }, {
   "code": "C8683",
   "subject": "GERMAN LANGUAGE",
-  "short":"GERMAN",
+  "abbr": "GERMAN",
   "type": "Elective"
 }, {
   "code": "A190",
   "subject": "HEALTH MANAGEMENT AND SOCIAL CARE",
-  "short":"HEALTH",
+  "abbr": "HEALTH",
   "type": "Elective"
 }, {
   "code": "C8687",
   "subject": "HINDI LANGUAGE",
-  "short":"HINDI",
+  "abbr": "HINDI",
   "type": "Elective"
 }, {
   "code": "A110",
   "subject": "HISTORY",
-  "short":"HIST",
+  "abbr": "HIST",
   "type": "Elective"
 }, {
   "code": "A200",
   "subject": "INFORMATION AND COMMUNICATION TECHNOLOGY",
-  "short":"ICT",
+  "abbr": "ICT",
   "type": "Elective"
 }, {
   "code": "A160",
   "subject": "INTEGRATED SCIENCE",
-  "short":"IS",
+  "abbr": "IS",
   "type": "Elective"
 }, {
   "code": "C8281",
   "subject": "JAPANESE LANGUAGE",
-  "short":"JAP",
+  "abbr": "JAP",
   "type": "Elective"
 }, {
   "code": "A060",
   "subject": "LITERATURE IN ENGLISH",
-  "short":"ENGLIT",
+  "abbr": "ENGLIT",
   "type": "Elective"
 }, {
   "code": "A032",
   "subject": "MATHEMATICS EXTENDED PART (ALGEBRA AND CALCULUS)",
-  "short":"M2",
+  "abbr": "M2",
   "type": "Elective"
 }, {
   "code": "A031",
   "subject": "MATHEMATICS EXTENDED PART (CALCULUS AND STATISTICS)",
-  "short":"M1",
+  "abbr": "M1",
   "type": "Elective"
 }, {
   "code": "A220",
   "subject": "MUSIC",
-  "short":"MUS",
+  "abbr": "MUS",
   "type": "Elective"
 }, {
   "code": "A240",
   "subject": "PHYSICAL EDUCATION",
-  "short":"PE",
+  "abbr": "PE",
   "type": "Elective"
 }, {
   "code": "A150",
   "subject": "PHYSICS",
-  "short":"PHY",
+  "abbr": "PHY",
   "type": "Elective"
 }, {
   "code": "C8685",
   "subject": "SPANISH LANGUAGE",
-  "short":"SPAN",
+  "abbr": "SPAN",
   "type": "Elective"
 }, {
   "code": "A211",
   "subject": "TECHNOLOGY AND LIVING (FASHION, CLOTHING AND TEXTILES)",
-  "short":"TECH1",
+  "abbr": "TECH1",
   "type": "Elective"
 }, {
   "code": "A210",
   "subject": "TECHNOLOGY AND LIVING (FOOD SCIENCE AND TECHNOLOGY)",
-  "short":"TECH2",
+  "abbr": "TECH2",
   "type": "Elective"
 }, {
   "code": "A120",
   "subject": "TOURISM AND HOSPITALITY STUDIES",
-  "short":"THS",
+  "abbr": "THS",
   "type": "Elective"
 }, {
   "code": "C8686",
   "subject": "URDU LANGUAGE",
-  "short":"URDU",
+  "abbr": "URDU",
   "type": "Elective"
 }, {
   "code": "A230",
   "subject": "VISUAL ARTS",
-  "short":"VA",
+  "abbr": "VA",
   "type": "Elective"
 }, {
   "code": "A020",
   "subject": "ENGLISH LANGUAGE",
-  "short":"ENG",
+  "abbr": "ENG",
   "type": "Compulsory"
 }, {
   "code": "A040",
   "subject": "LIBERAL STUDIES",
-  "short":"LS",
+  "abbr": "LS",
   "type": "Compulsory"
 }, {
   "code": "A030",
   "subject": "MATHEMATICS COMPULSORY PART",
-  "short":"MATH",
+  "abbr": "MATH",
   "type": "Compulsory"
 }, {
   "code": "B662",
   "subject": "APPLIED PSYCHOLOGY",
-  "short": "APL-B662-APPLIED PSYCHOLOGY",
+  "abbr": "APL-B662-APPLIED PSYCHOLOGY",
   "type": "APL"
 }, {
   "code": "B624",
   "subject": "AUTOMOTIVE TECHNOLOGY",
-  "short": "APL-B624-AUTOMOTIVE TECHNOLOGY",
+  "abbr": "APL-B624-AUTOMOTIVE TECHNOLOGY",
   "type": "APL"
 }, {
   "code": "B640",
   "subject": "AVIATION STUDIES",
-  "short": "APL-B640-AVIATION STUDIES",
+  "abbr": "APL-B640-AVIATION STUDIES",
   "type": "APL"
 }, {
   "code": "B657",
   "subject": "BUILDING FACILITIES ENGINEERING",
-  "short": "APL-B657-BUILDING FACILITIES ENGINEERING",
+  "abbr": "APL-B657-BUILDING FACILITIES ENGINEERING",
   "type": "APL"
 }, {
   "code": "B612",
   "subject": "CHILD DEVELOPMENT AND CARE",
-  "short": "APL-B612-CHILD DEVELOPMENT AND CARE",
+  "abbr": "APL-B612-CHILD DEVELOPMENT AND CARE",
   "type": "APL"
 }, {
   "code": "B649",
   "subject": "COMMERCIAL COMIC ART",
-  "short": "APL-B649-COMMERCIAL COMIC ART",
+  "abbr": "APL-B649-COMMERCIAL COMIC ART",
   "type": "APL"
 }, {
   "code": "B658",
   "subject": "ELECTRONIC PRODUCT DESIGN IN ACTION",
-  "short": "APL-B658-ELECTRONIC PRODUCT DESIGN IN ACTION",
+  "abbr": "APL-B658-ELECTRONIC PRODUCT DESIGN IN ACTION",
   "type": "APL"
 }, {
   "code": "B659",
   "subject": "ENVIRONMENTAL ENGINEERING",
-  "short": "APL-B659-ENVIRONMENTAL ENGINEERING",
+  "abbr": "APL-B659-ENVIRONMENTAL ENGINEERING",
   "type": "APL"
 }, {
   "code": "B655",
   "subject": "EVENTS PLANNING AND OPERATION",
-  "short": "APL-B655-EVENTS PLANNING AND OPERATION",
+  "abbr": "APL-B655-EVENTS PLANNING AND OPERATION",
   "type": "APL"
 }, {
   "code": "B627",
   "subject": "EXERCISE SCIENCE AND HEALTH FITNESS",
-  "short": "APL-B627-EXERCISE SCIENCE AND HEALTH FITNESS",
+  "abbr": "APL-B627-EXERCISE SCIENCE AND HEALTH FITNESS",
   "type": "APL"
 }, {
   "code": "B609",
   "subject": "FILM AND VIDEO STUDIES",
-  "short": "APL-B609-FILM AND VIDEO STUDIES",
+  "abbr": "APL-B609-FILM AND VIDEO STUDIES",
   "type": "APL"
 }, {
   "code": "B610",
   "subject": "FUNDAMENTAL COSMETOLOGY",
-  "short": "APL-B610-FUNDAMENTAL COSMETOLOGY",
+  "abbr": "APL-B610-FUNDAMENTAL COSMETOLOGY",
   "type": "APL"
 }, {
   "code": "B656",
   "subject": "FUNDAMENTAL HEALTH CARE",
-  "short": "APL-B656-FUNDAMENTAL HEALTH CARE",
+  "abbr": "APL-B656-FUNDAMENTAL HEALTH CARE",
   "type": "APL"
 }, {
   "code": "B631",
   "subject": "HEALTH AND BEAUTY KEEPING IN TCM",
-  "short": "APL-B631-HEALTH AND BEAUTY KEEPING IN TCM",
+  "abbr": "APL-B631-HEALTH AND BEAUTY KEEPING IN TCM",
   "type": "APL"
 }, {
   "code": "B618",
   "subject": "HEALTH CARE PRACTICE",
-  "short": "APL-B618-HEALTH CARE PRACTICE",
+  "abbr": "APL-B618-HEALTH CARE PRACTICE",
   "type": "APL"
 }, {
   "code": "B611",
   "subject": "HOSPITALITY SERVICES IN PRACTICE",
-  "short": "APL-B611-HOSPITALITY SERVICES IN PRACTICE",
+  "abbr": "APL-B611-HOSPITALITY SERVICES IN PRACTICE",
   "type": "APL"
 }, {
   "code": "B615",
   "subject": "HOTEL OPERATIONS",
-  "short": "APL-B615-HOTEL OPERATIONS",
+  "abbr": "APL-B615-HOTEL OPERATIONS",
   "type": "APL"
 }, {
   "code": "B643",
   "subject": "IMAGE DESIGN",
-  "short": "APL-B643-IMAGE DESIGN",
+  "abbr": "APL-B643-IMAGE DESIGN",
   "type": "APL"
 }, {
   "code": "B650",
   "subject": "INFOTAINMENT PRODUCTION",
-  "short": "APL-B650-INFOTAINMENT PRODUCTION",
+  "abbr": "APL-B650-INFOTAINMENT PRODUCTION",
   "type": "APL"
 }, {
   "code": "B639",
   "subject": "INNOVATIVE PRODUCT DESIGN",
-  "short": "APL-B639-INNOVATIVE PRODUCT DESIGN",
+  "abbr": "APL-B639-INNOVATIVE PRODUCT DESIGN",
   "type": "APL"
 }, {
   "code": "B617",
   "subject": "INTRODUCTION TO THEATRE ARTS",
-  "short": "APL-B617-INTRODUCTION TO THEATRE ARTS",
+  "abbr": "APL-B617-INTRODUCTION TO THEATRE ARTS",
   "type": "APL"
 }, {
   "code": "B628",
   "subject": "JEWELLERY ARTS AND DESIGN",
-  "short": "APL-B628-JEWELLERY ARTS AND DESIGN",
+  "abbr": "APL-B628-JEWELLERY ARTS AND DESIGN",
   "type": "APL"
 }, {
   "code": "B595",
   "subject": "MARKETING IN GLOBAL TRADE",
-  "short": "APL-B595-MARKETING IN GLOBAL TRADE",
+  "abbr": "APL-B595-MARKETING IN GLOBAL TRADE",
   "type": "APL"
 }, {
   "code": "B660",
   "subject": "MEDICAL LABORATORY SCIENCE",
-  "short": "APL-B660-MEDICAL LABORATORY SCIENCE",
+  "abbr": "APL-B660-MEDICAL LABORATORY SCIENCE",
   "type": "APL"
 }, {
   "code": "B646",
   "subject": "MULTIMEDIA ENTERTAINMENT STUDIES",
-  "short": "APL-B646-MULTIMEDIA ENTERTAINMENT STUDIES",
+  "abbr": "APL-B646-MULTIMEDIA ENTERTAINMENT STUDIES",
   "type": "APL"
 }, {
   "code": "B596",
   "subject": "PRACTICAL ACCOUNTING FOR SMES",
-  "short": "APL-B596-PRACTICAL ACCOUNTING FOR SMES",
+  "abbr": "APL-B596-PRACTICAL ACCOUNTING FOR SMES",
   "type": "APL"
 }, {
   "code": "B661",
   "subject": "PUBLIC RELATIONS AND ADVERTISING",
-  "short": "APL-B661-PUBLIC RELATIONS AND ADVERTISING",
+  "abbr": "APL-B661-PUBLIC RELATIONS AND ADVERTISING",
   "type": "APL"
 }, {
   "code": "B652",
   "subject": "PURCHASING AND MERCHANDISING",
-  "short": "APL-B652-PURCHASING AND MERCHANDISING",
+  "abbr": "APL-B652-PURCHASING AND MERCHANDISING",
   "type": "APL"
 }, {
   "code": "B651",
   "subject": "RADIO HOST AND PROGRAMME PRODUCTION",
-  "short": "APL-B651-RADIO HOST AND PROGRAMME PRODUCTION",
+  "abbr": "APL-B651-RADIO HOST AND PROGRAMME PRODUCTION",
   "type": "APL"
 }, {
   "code": "B653",
   "subject": "RETAIL MANAGEMENT",
-  "short": "APL-B653-RETAIL MANAGEMENT",
+  "abbr": "APL-B653-RETAIL MANAGEMENT",
   "type": "APL"
 }, {
   "code": "B590",
   "subject": "SPORTS COACHING AND MANAGEMENT",
-  "short": "APL-B590-SPORTS COACHING AND MANAGEMENT",
+  "abbr": "APL-B590-SPORTS COACHING AND MANAGEMENT",
   "type": "APL"
 }, {
   "code": "B599",
   "subject": "TAKING A CHANCE ON DANCE",
-  "short": "APL-B599-TAKING A CHANCE ON DANCE",
+  "abbr": "APL-B599-TAKING A CHANCE ON DANCE",
   "type": "APL"
 }, {
   "code": "B597",
   "subject": "UNDERSTANDING FINANCIAL SERVICES",
-  "short": "APL-B597-UNDERSTANDING FINANCIAL SERVICES",
+  "abbr": "APL-B597-UNDERSTANDING FINANCIAL SERVICES",
   "type": "APL"
 }, {
   "code": "B654",
   "subject": "UNDERSTANDING HONG KONG LAW",
-  "short": "APL-B654-UNDERSTANDING HONG KONG LAW",
+  "abbr": "APL-B654-UNDERSTANDING HONG KONG LAW",
   "type": "APL"
 }, {
   "code": "B616",
   "subject": "WESTERN CUISINE",
-  "short": "APL-B616-WESTERN CUISINE",
+  "abbr": "APL-B616-WESTERN CUISINE",
   "type": "APL"
 }]
