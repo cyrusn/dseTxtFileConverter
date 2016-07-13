@@ -3,7 +3,7 @@
 const Fs = require('fs');
 const _ = require('lodash');
 const Json2csv = require('json2csv');
-const Code = require('./code.json');
+const Code = require('./subjectCode.json');
 const Filenames = Fs.readdirSync('./raw');
 const Path = require('path');
 const SchoolCode = 30794;
@@ -42,7 +42,9 @@ function parseTxt2JSON (lines) {
 
     const APLRegExp = /([B]\d{3})\s+(\w{2})\s+([YN])/g;
     // handle subgrade of A010
-    const A010RegExp = /(A010)\s+1\s+([\dUX])\s+2\s+([\dUX])\s+3\s+([\dUX])\s+4\s+([\dUX])\s+5\s+([\dUX])/g;
+    // const A010RegExp = /(A010)\s+1\s+([\dUX])\s+2\s+([\dUX])\s+3\s+([\dUX])\s+4\s+([\dUX])\s+5\s+([\dUX])/g;
+    // From 2016 A010 only have 4 sub-subject
+    const A010RegExp = / (A010)\s+1\s+([\dUX])\s+2\s+([\dUX])\s+3\s+([\dUX])\s+4\s+([\dUX])/g;
     // handle subgrade of A020
     const A020RegExp = /(A020)\s+1\s+([\dUX])\s+2\s+([\dUX])\s+3\s+([\dUX])\s+4\s+([\dUX])/g;
     const generalSubjectRegExp = /([ABC]\d{3})\s+([\dUX])/g;
@@ -56,7 +58,9 @@ function parseTxt2JSON (lines) {
         .replace(APLRegExp, '"APL":"$1-$2-$3",')
         .replace(A165RegExp, '$1')
         // convert to e.g. CHI-S:23223
-        .replace(A010RegExp, '"$1S":"$2$3$4$5$6",')
+        // From 2016 A010 only have 4 sub-subject
+        // .replace(A010RegExp, '"$1S":"$2$3$4$5$6",')
+        .replace(A010RegExp, '"$1S":"$2$3$4$5",')
         // convert to e.g. ENG-S:2322
         .replace(A020RegExp, '"$1S":"$2$3$4$5",')
         // convert to e.g. PHY:2
@@ -84,7 +88,6 @@ function convertFile (file, filename) {
   const filePath = Path.join('./result', Path.basename(filename, '.txt'));
   console.log(filePath);
 
-
   const fields = ['id', 'dob', 'name', 'hkeaaId', 'A010', 'A020', 'A030', 'A031', 'A032', 'A040', 'A070', 'A080', 'A100', 'A110', 'A120', 'A130', 'A140', 'A150', 'A161', 'A162', 'A163', 'A165', 'A172', 'A200', 'A230', 'A010S', 'A020S', 'APL'];
   const fieldNames = convertCodeToText(fields);
 
@@ -102,9 +105,9 @@ function convertFile (file, filename) {
 
   const namedKeyData = convertedData.map((student) => {
     return _.mapKeys(student, (value, key) => {
-      const code = _.find(Code, {'code': key})
+      const code = _.find(Code, {'code': key});
       return code ? code.abbr : key;
-    })
+    });
   });
   Fs.writeFileSync(filePath + '.json', JSON.stringify(namedKeyData, null, 2), 'utf-8');
 }
@@ -115,5 +118,3 @@ Filenames.forEach(filename => {
   console.log(`Converting ${filename}:`);
   convertFile(data, filename);
 });
-
-
