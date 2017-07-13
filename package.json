@@ -5,10 +5,10 @@
   "main": "convert-simplex.js",
   "dependencies": {
     "json2csv": "^3.2.0",
-    "lodash": "^4.3.0"
+    "lodash": "^4.3.0",
+    "minimist": "^1.2.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "main": "node index.js"
   },

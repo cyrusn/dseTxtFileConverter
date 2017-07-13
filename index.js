@@ -8,6 +8,20 @@ const Filenames = Fs.readdirSync('./raw');
 const Path = require('path');
 const SchoolCode = 30794;
 
+
+var argv = require('minimist')(process.argv.slice(2));
+if (!argv.path) {
+  console.log("node index.js --path=\"PathToTxt\"")
+} else {
+  var filename = argv.path
+  const filePath = Path.join('./', filename);
+  const data = Fs.readFileSync(filePath, 'utf-8');
+  console.log(`Converting ${filename}:`);
+  convertFile(data, filename);
+}
+
+
+
 function convertCodeToText (array) {
   return array.map(string => {
     const obj = _.find(Code, {'code': string});
@@ -111,10 +125,3 @@ function convertFile (file, filename) {
   });
   Fs.writeFileSync(filePath + '.json', JSON.stringify(namedKeyData, null, 2), 'utf-8');
 }
-
-Filenames.forEach(filename => {
-  const filePath = Path.join('./raw', filename);
-  const data = Fs.readFileSync(filePath, 'utf-8');
-  console.log(`Converting ${filename}:`);
-  convertFile(data, filename);
-});
