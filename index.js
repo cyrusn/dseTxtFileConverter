@@ -1,31 +1,28 @@
-'use strict';
-
 const Fs = require('fs');
 const _ = require('lodash');
 const Json2csv = require('json2csv');
 const Code = require('./subjectCode.json');
-const Filenames = Fs.readdirSync('./raw');
 const Path = require('path');
 const SchoolCode = 30794;
 
-
 var argv = require('minimist')(process.argv.slice(2));
+
 if (!argv.path) {
-  console.log("node index.js --path=\"PathToTxt\"")
+  console.log('node index.js --path="PathToTxt"');
 } else {
-  var filename = argv.path
+  var filename = argv.path;
   const filePath = Path.join('./', filename);
   const data = Fs.readFileSync(filePath, 'utf-8');
   console.log(`Converting ${filename}:`);
   convertFile(data, filename);
 }
 
-
-
 function convertCodeToText (array) {
   return array.map(string => {
     const obj = _.find(Code, {'code': string});
-    return obj ? obj.abbr : string;
+    return obj
+      ? obj.abbr
+      : string;
   });
 }
 
@@ -41,15 +38,12 @@ function parseTxt2JSON (lines) {
     };
 
     const jsonString = JSON.parse(
-      // construct literal object with regex parsing
-      // the grades are saved as result and parsed separately
-      line
-        // convert 5** to 7
-        .replace(/5\*\*/g, '7')
-        // convert 5* to 6
-        .replace(/5\*/g, '6')
-        .replace(basicInfoRegExp, JSON.stringify(schema))
-    );
+    // construct literal object with regex parsing
+    // the grades are saved as result and parsed separately
+    line
+      .replace(/5\*\*/g, '7') // convert 5** to 7
+      .replace(/5\*/g, '6') // convert 5* to 6
+      .replace(basicInfoRegExp, JSON.stringify(schema)));
 
     // split string into array of words
     jsonString.name = _.words(jsonString.name).join(' ');
@@ -68,27 +62,23 @@ function parseTxt2JSON (lines) {
     const A165RegExp = /A165\s+([ABC])/g;
 
     // parse grades
-    const resultString = '{' + jsonString.grades
-        .replace(APLRegExp, '"APL":"$1-$2-$3",')
-        .replace(A165RegExp, '$1')
-        // convert to e.g. CHI-S:23223
-        // From 2016 A010 only have 4 sub-subject
-        // .replace(A010RegExp, '"$1S":"$2$3$4$5$6",')
-        .replace(A010RegExp, '"$1S":"$2$3$4$5",')
-        // convert to e.g. ENG-S:2322
-        .replace(A020RegExp, '"$1S":"$2$3$4$5",')
-        // convert to e.g. PHY:2
-        .replace(generalSubjectRegExp, '"$1":"$2",')
-        // remove all spaces
-        .replace(/\s+/g, '')
-        // remove the last comma
-        .slice(0, -1) + '}';
+    const resultString = '{' + jsonString.grades.replace(APLRegExp, '"APL":"$1-$2-$3",').replace(A165RegExp, '$1')
+    // convert to e.g. CHI-S:23223
+    // From 2016 A010 only have 4 sub-subject
+    // .replace(A010RegExp, '"$1S":"$2$3$4$5$6",')
+      .replace(A010RegExp, '"$1S":"$2$3$4$5",')
+    // convert to e.g. ENG-S:2322
+      .replace(A020RegExp, '"$1S":"$2$3$4$5",')
+    // convert to e.g. PHY:2
+      .replace(generalSubjectRegExp, '"$1":"$2",')
+    // remove all spaces
+      .replace(/\s+/g, '')
+    // remove the last comma
+      .slice(0, -1) + '}';
 
     const resultObj = _(jsonString)
-      // remove grades
-      .omit('grades')
-      .merge(JSON.parse(resultString))
-      .value();
+    // remove grades
+      .omit('grades').merge(JSON.parse(resultString)).value();
 
     return resultObj;
   });
@@ -114,14 +104,17 @@ function convertFile (file, filename) {
   Json2csv(config, (err, csv) => {
     if (err) throw err;
     Fs.writeFileSync(filePath + '.csv', csv, 'utf-8');
-    console.log('Process Complete!');
   });
 
   const namedKeyData = convertedData.map((student) => {
     return _.mapKeys(student, (value, key) => {
       const code = _.find(Code, {'code': key});
-      return code ? code.abbr : key;
+      return code
+        ? code.abbr
+        : key;
     });
   });
+
   Fs.writeFileSync(filePath + '.json', JSON.stringify(namedKeyData, null, 2), 'utf-8');
+  console.log('Process Complete!');
 }
